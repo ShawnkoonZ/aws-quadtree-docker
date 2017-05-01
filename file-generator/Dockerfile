@@ -17,15 +17,13 @@ RUN apt update && \
 RUN apt install default-jre -y && \
 		apt install default-jdk -y
 
-# Install git
-RUN apt install git -y
-
 # Navigate into the home dir
 RUN mkdir -p /home/docker/app
 WORKDIR /home/docker/app
 
-# Clone Java file-generator project from github.
-RUN git clone https://github.com/ShawnkoonZ/aws-quadtree-java.git
+# Install Git & Clone Java file-generator project from github.
+RUN apt install git -y && \
+		git clone https://github.com/ShawnkoonZ/aws-quadtree-java.git
 WORKDIR ./aws-quadtree-java
 
 # Execute Java program.
