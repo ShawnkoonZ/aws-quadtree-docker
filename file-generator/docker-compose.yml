@@ -1,0 +1,6 @@
+version: '2'
+
+services:
+  img:
+    build: .
+    image: shawnkoonz/file_gen:v2

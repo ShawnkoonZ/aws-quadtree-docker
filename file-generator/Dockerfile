@@ -2,15 +2,20 @@
 # Please visit https://github.com/ShawnkoonZ
 
 FROM ubuntu:latest
-MAINTAINER Shawnkoonz Maid <shawnkoongithub@gmail.com>
+LABEL maintainer.name="Shawnkoonz-Maid" \
+			maintainer.email="shawnkoongithub@gmail.com" \
+			org.name="ShawnkoonZ" \
+			org.web="https://github.com/ShawnkoonZ" \
+			version="1.0" \
+			description="This image clones file-generator && deploys quad tree files upinto S3."
 
 ## Basic package updates.
-RUN apt-get update
-RUN apt-get upgrade -y
+RUN apt update && \
+		apt upgrade -y
 
 # Install Java into the container
-RUN apt install default-jre -y
-RUN apt install default-jdk -y
+RUN apt install default-jre -y && \
+		apt install default-jdk -y
 
 # Install git
 RUN apt install git -y
@@ -21,7 +26,8 @@ WORKDIR /home/docker/app
 
 # Clone Java file-generator project from github.
 RUN git clone https://github.com/ShawnkoonZ/aws-quadtree-java.git
-RUN cd ./aws-quadtree-java
+WORKDIR ./aws-quadtree-java
 
 # Execute Java program.
-RUN javac *.java
+RUN javac *.java && \
+		java QuadTreeTester
