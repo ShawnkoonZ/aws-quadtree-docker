@@ -26,6 +26,18 @@ RUN apt install git -y && \
 		git clone https://github.com/ShawnkoonZ/aws-quadtree-java.git
 WORKDIR ./aws-quadtree-java
 
+# Install JAVA AWS SDK
+RUN apt install wget -y && \
+		apt install unzip -y && \
+		wget https://sdk-for-java.amazonwebservices.com/latest/aws-java-sdk.zip && \
+		unzip -q aws-java-sdk.zip && \
+		mkdir lib && \
+		mkdir lib/sdk && \
+		mv aws-java-sdk*/* ./lib/sdk && \
+		rm -rf aws-java-sdk* && \
+		ls && \
+		pwd
+
 # Execute Java program.
 RUN javac *.java && \
 		java QuadTreeTester
