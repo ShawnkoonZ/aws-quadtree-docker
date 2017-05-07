@@ -37,5 +37,4 @@ RUN apt install wget -y && \
     rm -rf aws-java-sdk*
 
 # Execute Java program.
-RUN javac *.java && \
-    java QuadTreeTester
+RUN ant
