@@ -34,9 +34,7 @@ RUN apt install wget -y && \
     mkdir lib && \
     mkdir lib/sdk && \
     mv aws-java-sdk*/* ./lib/sdk && \
-    rm -rf aws-java-sdk* && \
-    ls && \
-    pwd
+    rm -rf aws-java-sdk*
 
 # Execute Java program.
 RUN javac *.java && \
