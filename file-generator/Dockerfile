@@ -29,12 +29,9 @@ WORKDIR ./aws-quadtree-java
 # Install JAVA AWS SDK
 RUN apt install wget -y && \
     apt install unzip -y && \
-    wget https://sdk-for-java.amazonwebservices.com/latest/aws-java-sdk.zip && \
-    unzip -q aws-java-sdk.zip && \
-    mkdir lib && \
-    mkdir lib/sdk && \
-    mv aws-java-sdk*/* ./lib/sdk && \
-    rm -rf aws-java-sdk*
+    chmod +x ./install.sh && \
+    ./install.sh
 
 # Execute Java program.
-RUN ant
+RUN apt install ant -y && \
+    ant
